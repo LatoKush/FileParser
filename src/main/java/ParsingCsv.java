@@ -8,14 +8,13 @@ public class ParsingCsv {
 
     //Основной метод приложения
     public static void main(String[] args) throws IOException {
-        String filePath = "File3.csv";
-        List<Product> products = ParseProductCsv(filePath);
+        String filePath = "File4.csv";
+        ParseCsv(filePath);
 
     }
 
-    private static List<Product> ParseProductCsv(String filePath) throws IOException {
+    private static List<String> ParseCsv(String filePath) throws IOException {
         //Загружаем строки из файла
-        List<Product> products = new ArrayList<Product>();
         List<String> fileLines = Files.readAllLines(Paths.get(filePath));
         for (String fileLine : fileLines) {
             String[] splitedText = fileLine.split(",");
@@ -29,17 +28,8 @@ public class ParsingCsv {
                     columnList.add(splitedText[i]);
                 }
             }
-            Product product = new Product();
-            product.Name = columnList.get(0);
-            product.PurchasePrice = columnList.get(1);
-            product.Group = columnList.get(2);
-            product.Amount = columnList.get(3);
-            product.Composition = columnList.get(4);
-            product.Count = columnList.get(5);
-            products.add(product);
-
         }
-        return products;
+        return null;
     }
 
     //Проверка является ли колонка частью предыдущей колонки
